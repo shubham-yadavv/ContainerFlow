@@ -34,5 +34,10 @@ services:
     depends_on:
       - containerflow
 
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
 volumes:
   mongo-db:

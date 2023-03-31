@@ -6,6 +6,8 @@ const { server } = require("./config/loadenv");
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
