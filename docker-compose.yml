@@ -1,35 +1,38 @@
-version: '3.4'
+version: "3.9"
 
 services:
-  devopsapp:
-    image: shubham22121/devopsapp:v1
+
+  containerflow:
+    image: shubham22121/containerflow:latest
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 9999:9999
-    env_file:
-      - .env
+    depends_on:
+      - mongo
     volumes:
-      - .:/app
+      - ./:/app
+    environment:
+      - MONGO_USER=shubham
+      - MONGO_PASSWORD=mypassword
 
-  devopsmongo:
+  mongo:
     image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=shubham
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
     volumes:
-      - mongo-data:/data/db
-    ports:
-      - 27017:27017
+      - mongo-db:/data/db
 
-  devopsnginx:
+  nginx:
     image: nginx
     volumes:
       - ./ngnix/default.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - 80:80
     depends_on:
-      - devopsapp
-
-
+      - containerflow
 
 volumes:
-  mongo-data:
+  mongo-db:

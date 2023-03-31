@@ -1,9 +1,6 @@
-const User = require('./user');
-const express = require('express');
+const User = require('../models/user');
 
-const router = express.Router();
-
-router.post('/user', async (req, res) => {
+const register = async (req, res) => {
     const { name, password } = req.body;
 
     try {
@@ -23,24 +20,36 @@ router.post('/user', async (req, res) => {
     
         }
     }
-)
 
-router.get('/user', async (req, res) => {
+const login = async (req, res) => {
+
+    const { name, password } = req.body;
+
     try {
-        const users = await User.find();
-        res.status(200).json(users);
-        
+
+        const oldUser = await User.findOne({ name });
+
+        if (oldUser.password !== password) return res.status(400).json({ message: "Invalid credentials" });
+
+        res.status(200).json(oldUser);
+
     } catch (error) {
+
         res.status(500).json({ message: error.message });
-        
+
     }
+
 }
-)
 
 
-router.get('/', (req, res) => {
+const hello = (req, res) => {
     res.send('Hello there docker!');
-    }
-)
+}
 
-module.exports = router;
+
+module.exports = {
+    register,
+    login,
+    hello
+}
+
