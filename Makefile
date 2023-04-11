@@ -9,7 +9,7 @@ dev:
 stop:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 
-k8s-start:
+deploy:
 	kubectl apply -f kubernetes/containerflow/containerflow.yml    
 	kubectl apply -f kubernetes/mongodb/mongo.yml
 	kubectl apply -f kubernetes/redis/redis.yml

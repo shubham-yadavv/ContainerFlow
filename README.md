@@ -21,3 +21,12 @@ REDIS_IP=redis
 ```bash
 make build
 ```
+
+#### or
+
+# kubernetes deployment
+```bash
+make deploy
+```
+
+
