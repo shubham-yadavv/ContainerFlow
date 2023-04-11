@@ -3,7 +3,7 @@ services:
   nginx:
     ports:
       - "80:80"
-  duo-server:
+  containerflow:
     deploy:
       replicas: 8
       restart_policy:

@@ -1,4 +1,3 @@
-# redis deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,19 +36,6 @@ spec:
 
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: duoredis
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-
----
-# redis service
-apiVersion: v1
 kind: Service
 metadata:
   name: redis-service
@@ -63,7 +49,6 @@ spec:
   type: ClusterIP
 
 --- 
-# redis configmap
 apiVersion: v1
 kind: ConfigMap
 metadata:
