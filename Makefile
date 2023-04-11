@@ -10,11 +10,11 @@ stop:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 
 k8s-start:
-	kubectl apply -f kubernetes/duo-server/duo-server.yml    
+	kubectl apply -f kubernetes/containerflow/containerflow.yml    
 	kubectl apply -f kubernetes/mongodb/mongo.yml
 	kubectl apply -f kubernetes/redis/redis.yml
 
 k8s-stop:
-	kubectl delete -f kubernetes/duo-server/duo-server.yml    
+	kubectl delete -f kubernetes/containerflow/containerflow.yml    
 	kubectl delete -f kubernetes/mongodb/mongo.yml
 	kubectl delete -f kubernetes/redis/redis.yml

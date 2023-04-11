@@ -6,9 +6,9 @@ services:
       - "3000:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-  duo-server:
+  containerflow:
     build: .
-    image: shubham22121/duo-server
+    image: shubham22121/containerflow
     environment:
       - PORT=3000
     depends_on:

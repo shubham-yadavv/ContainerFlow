@@ -64,7 +64,7 @@ app.use(
 app.use(express.json());
 
 app.get("/api/v1", (req, res) => {
-  res.send("<h2>duo server</h2>");
+  res.send("<h2>containerflow server</h2>");
   console.log("yeah it ran");
 });
 

@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:
-            claimName: duomongo
+            claimName: mongo-volume
 
 
 ---
@@ -59,7 +59,7 @@ metadata:
   name: mongo-config
 data:
   mongo-url: mongo-service
-  mongo-volume: duomongo
+  mongo-volume: mongo-volume
 
 ---
 apiVersion: v1
@@ -75,7 +75,7 @@ data:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: duomongo
+  name: mongo-volume
 spec:
   accessModes:
     - ReadWriteOnce
