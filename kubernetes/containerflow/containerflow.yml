@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: containerflow
-        image: shubham22121/containerflow:latest
-        imagePullPolicy: Never
+        image: shubham22121/containerflow:v1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
         env:
