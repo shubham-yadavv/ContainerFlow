@@ -29,17 +29,12 @@ pipeline {
         }
 
         // stage run docker container with compose
-
         stage('Run docker container with compose'){
             steps{
                 script{
-                    sh 'make dev'
+                    sh 'make deploy'
                 }
             }
         }
-
     }
-    
-    
-    
 }
